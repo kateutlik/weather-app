@@ -1,0 +1,62 @@
+{
+  "name": "WeatherApp",
+  "version": "0.0.1",
+  "description": "Weather App shows weather for 50 cities around user.",
+  "author": "Katsiaryna Utlik",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run lint && webpack-dev-server --content-base ./src --hot --inline --progress",
+    "static": "webpack-dev-server --content-base ./src",
+    "postinstall": "typings install",
+    "lint": "tslint \"src/**/*.ts\"",
+    "build": "rimraf dist && webpack --config config/webpack.common.js --progress --profile --bail"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "core-js": "^2.4.0",
+    "node-sass": "^3.7.0",
+    "pre-commit": "^1.1.3"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.27-alpha",
+    "@types/node": "^4.0.28-alpha",
+    "@types/source-map": "^0.1.25-alpha",
+    "@types/uglify-js": "^2.0.26-alpha",
+    "@types/webpack": "^1.12.28-alpha",
+    "@types/whatwg-fetch": "0.0.32",
+    "awesome-typescript-loader": "~0.17.0",
+    "codelyzer": "0.0.28",
+    "compression-webpack-plugin": "0.3.1",
+    "copy-webpack-plugin": "3.0.1",
+    "css-loader": "0.25.0",
+    "es6-promise-loader": "^1.0.1",
+    "extract-text-webpack-plugin": "1.0.1",
+    "file-loader": "0.9.0",
+    "html-loader": "0.4.3",
+    "html-webpack-plugin": "2.22.0",
+    "http-server": "^0.9.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "3.11.2",
+    "raw-loader": "0.5.1",
+    "rimraf": "2.5.4",
+    "sass-loader": "4.0.2",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "0.13.1",
+    "ts-helpers": "1.1.1",
+    "ts-loader": "0.8.2",
+    "ts-node": "1.3.0",
+    "tslint": "3.15.1",
+    "tslint-loader": "^2.1.3",
+    "typescript": "2.0.2",
+    "typings": "1.5.0",
+    "webpack": "1.13.3",
+    "webpack-dev-server": "1.16.2",
+    "webpack-merge": "0.14.1"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  }
+}

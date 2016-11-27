@@ -1,0 +1,25 @@
+{
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true,
+  "module": "es6",
+  "moduleResolution": "node",
+  "noEmitOnError": true,
+  "noImplicitAny": false,
+  "lib": ["es2015", "dom"],
+  "outDir": "../dist/out-tsc",
+  "sourceMap": true,
+  "target": "es6",
+  "removeComments": false,
+  "suppressImplicitAnyIndexErrors": true,
+  "typeRoots": [
+    "../node_modules/@types"
+  ],
+  "types": [
+    "core-js",
+    "whatwg-fetch"
+  ],
+  "exclude": [
+    "node_modules",
+    "bower_components"
+  ]
+}
