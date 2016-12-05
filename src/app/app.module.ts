@@ -7,7 +7,9 @@ import routes from './routes';
 
 import { Cities } from './pages/cities';
 
-import { AppComponent, providers } from './';
+import { AppComponent } from './';
+
+import * as services from './services/index';
 
 @NgModule({
     imports: [
@@ -21,7 +23,7 @@ import { AppComponent, providers } from './';
         Cities
     ],
     providers: [
-        ...providers
+        services.WeatherService
     ],
     bootstrap: [ AppComponent ]
 })
