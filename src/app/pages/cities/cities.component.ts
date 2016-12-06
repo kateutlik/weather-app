@@ -15,9 +15,8 @@ export class Cities implements OnInit {
     showLoader = false;
     lat: number;
     lng: number;
-
-    page = 1;
     citiesCount: number;
+
     PAGE_MAX_COUNT = 10;
 
     constructor(private toasterService: ToasterService, private weatherService: WeatherService) {
@@ -35,7 +34,7 @@ export class Cities implements OnInit {
                     title: 'Load',
                     body: '',
                     showCloseButton: true,
-                    timeout: 1000000000
+                    timeout: 5000
                 };
 
                 this.weatherService.getWeather(this.lat, this.lng)

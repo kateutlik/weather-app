@@ -15,6 +15,7 @@ import { AppComponent } from './';
 
 import { AppHeader } from './components/app-header';
 import { AppFooter } from './components/app-footer';
+import { CitiesTable } from './components/cities-table';
 import { Loader } from './components/loader';
 import { Map } from './components/map';
 
@@ -39,6 +40,7 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         // Components
         AppHeader,
         AppFooter,
+        CitiesTable,
         Loader,
         Map,
 
