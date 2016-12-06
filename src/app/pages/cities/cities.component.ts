@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
-import { Response } from '@angular/http';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Toast, ToasterService} from 'angular2-toaster/angular2-toaster';
 
 import { WeatherService } from '../../services/weather-service';
 import { IWeatherMap, IList } from '../../models/interfaces';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'cities',
@@ -12,16 +11,54 @@ import { Observable } from 'rxjs';
 })
 
 export class Cities implements OnInit {
-    weatherData: IList[];
+    weatherDataByPage: Array<Array<IList>> = [];
+    showLoader = false;
+    lat: number;
+    lng: number;
 
-    constructor(private weatherService: WeatherService) { }
+    page = 1;
+    citiesCount: number;
+    PAGE_MAX_COUNT = 10;
+
+    constructor(private toasterService: ToasterService, private weatherService: WeatherService) {
+    }
 
     ngOnInit() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                this.weatherService.getWeather(position.coords.latitude, position.coords.longitude)
-                    .subscribe((response:IWeatherMap) => {
-                        this.weatherData = response.list;
+                this.lat = position.coords.latitude;
+                this.lng = position.coords.longitude;
+                this.showLoader = true;
+
+                let toastConfig: Toast = {
+                    type: '',
+                    title: 'Load',
+                    body: '',
+                    showCloseButton: true,
+                    timeout: 1000000000
+                };
+
+                this.weatherService.getWeather(this.lat, this.lng)
+                    .subscribe((response: IWeatherMap) => {
+                        let weatherData = response.list;
+
+                        weatherData.sort((a, b) => {
+                            return a.name.localeCompare(b.name);
+                        });
+
+                        this.citiesCount = weatherData.length;
+
+                        for (let i = 0; i < this.citiesCount / this.PAGE_MAX_COUNT; i++) {
+                            this.weatherDataByPage[i] = weatherData.slice(i * this.PAGE_MAX_COUNT, (i + 1) * this.PAGE_MAX_COUNT);
+                        }
+
+                        this.showLoader = false;
+                    }, () => {
+                        this.showLoader = false;
+
+                        toastConfig.type = 'error';
+                        toastConfig.body = 'An error has occurred, please try again.';
+                        this.toasterService.pop(toastConfig);
                     });
             });
         }

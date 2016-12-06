@@ -109,7 +109,15 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: [/node_modules/],
                 loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
-            }
+            },
+
+
+            /* Url-file loaders support for *.woff, *.ttf, *.eot, *.svg
+             */
+            {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff&name=/assets/[name].[ext]'},
+            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream&name=/assets/[name].[ext]'},
+            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file?&name=/assets/[name].[ext]'},
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml&name=/assets/[name].[ext]'}
         ]
     },
 

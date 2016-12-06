@@ -1,0 +1,64 @@
+:host {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    height: 100%;
+    background: #563d7c;
+    animation: opacity 0.5s ease-out;
+
+
+}
+:host(.show) {
+    display: flex;
+}
+
+$color: #fff;
+$diam:  10px;
+$dots:  3;
+
+.loader {
+    margin: auto;
+    z-index: 1001;
+}
+.dot {
+    display: inline-block;
+    height: $diam;
+    width: $diam;
+    background: $color;
+    border-radius: 50%;
+
+    @for $i from 1 through $dots {
+        &:nth-of-type(#{$i}) {
+            animation: bounce 1.3s .15s*$i ease-out infinite;
+        }
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: initial;
+        height: $diam + 5px;
+    }
+
+    30% {
+        transform: translateY($diam*4);
+    }
+
+    60%, 100% {
+        transform: initial;
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

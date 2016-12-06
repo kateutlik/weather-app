@@ -1,16 +1,33 @@
-<table>
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Temperature</th>
-			<th>Wind speed</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let item of weatherData">
-			<td>{{item.name}}</td>
-			<td>{{item.main.temp}}</td>
-			<td>{{item.wind.speed}}</td>
-		</tr>
-	</tbody>
-</table>
+<div *ngIf="weatherDataByPage">
+    <h2>Weather Data</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th><i class="fa fa-map-marker" aria-hidden="true"></i> Name</th>
+                <th><i class="fa fa-thermometer-full" aria-hidden="true"></i> Temperature</th>
+                <th><i class="fa fa-angle-double-down" aria-hidden="true"></i> Pressure</th>
+                <th><i class="fa fa-tint" aria-hidden="true"></i> Humidity</th>
+                <th><i class="fa fa-flag" aria-hidden="true"></i> Wind speed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of weatherDataByPage[page-1]; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.main.temp}}</td>
+                <td>{{item.main.pressure}}</td>
+                <td>{{item.main.humidity}}</td>
+                <td>{{item.wind.speed}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ngb-pagination [collectionSize]="citiesCount" [(page)]="page" [maxSize]="PAGE_MAX_COUNT" [rotate]="true"
+                    [boundaryLinks]="true"></ngb-pagination>
+    <hr>
+</div>
+<map [lat]="lat" [lng]="lng"></map>
+<loader [ngClass]="{'show': showLoader}"></loader>
+<toaster-container></toaster-container>

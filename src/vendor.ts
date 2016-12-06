@@ -10,5 +10,8 @@ import '@angular/router';
 
 // RxJS
 import 'rxjs';
-// Other vendors for example jQuery, Lodash or Bootstrap
-// You can import js, ts, css, sass, ...
+
+// Styles
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'angular2-toaster/lib/toaster.css';
