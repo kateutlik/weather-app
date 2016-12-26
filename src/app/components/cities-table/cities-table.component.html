@@ -1,12 +1,12 @@
 <div *ngIf="weatherDataByPage.length">
-    <h2>Weather Data</h2>
+    <h2>Weather Data <span class="tag tag-info small">{{lastUpdateTableDate | date: 'short'}}</span></h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>#</th>
                 <th><i class="fa fa-map-marker" aria-hidden="true"></i> Name</th>
-                <th><i class="fa fa-thermometer-full" aria-hidden="true"></i> Temperature</th>
+                <th><i class="fa fa-thermometer-full" aria-hidden="true"></i> Temperature, C&ordm;</th>
                 <th><i class="fa fa-angle-double-down" aria-hidden="true"></i> Pressure</th>
                 <th><i class="fa fa-tint" aria-hidden="true"></i> Humidity</th>
                 <th><i class="fa fa-flag" aria-hidden="true"></i> Wind speed</th>
@@ -15,8 +15,8 @@
             <tbody>
             <tr *ngFor="let item of weatherDataByPage[page-1]; let i = index">
                 <td>{{(i * + 1 + pageMaxCount * (page-1))}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.main.temp}}</td>
+                <td>{{item.name | uppercase}}</td>
+                <td>{{item.main.temp | formatTemperature: 'K': 'C' | async | number : '1.1-1'}}</td>
                 <td>{{item.main.pressure}}</td>
                 <td>{{item.main.humidity}}</td>
                 <td>{{item.wind.speed}}</td>

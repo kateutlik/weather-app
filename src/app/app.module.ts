@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import routes from './routes';
 
 import * as services from './services/index';
+import * as pipes from './pipes/index';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { ToasterModule } from 'angular2-toaster/angular2-toaster';
@@ -45,7 +46,11 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         Map,
 
         // Pages
-        Cities
+        Cities,
+
+        // Pipes
+        pipes.FormatTemperaturePipe,
+        pipes.CityWeatherPipe
     ],
     providers: [
         services.WeatherService

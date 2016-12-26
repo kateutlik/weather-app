@@ -12,6 +12,7 @@ export class CitiesTable {
     @Input() weatherDataByPage: Array<Array<IList>> = [];
     @Input() citiesCount: number;
     @Input() pageMaxCount: number;
+    @Input() lastUpdateTableDate: Object;
 
     page = 1;
 }

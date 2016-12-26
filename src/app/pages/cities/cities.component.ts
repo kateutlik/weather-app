@@ -16,6 +16,8 @@ export class Cities implements OnInit {
     lat: number;
     lng: number;
     citiesCount: number;
+    lastUpdatedWeatherDataDate: Object;
+    cityName: string = '';
 
     PAGE_MAX_COUNT = 10;
 
@@ -51,6 +53,8 @@ export class Cities implements OnInit {
                             this.weatherDataByPage[i] = weatherData.slice(i * this.PAGE_MAX_COUNT, (i + 1) * this.PAGE_MAX_COUNT);
                         }
 
+                        this.lastUpdatedWeatherDataDate = new Date();
+
                         this.showLoader = false;
                     }, () => {
                         this.showLoader = false;
@@ -61,5 +65,9 @@ export class Cities implements OnInit {
                     });
             });
         }
+    }
+
+    setCityName(value: string) {
+        this.cityName = value;
     }
 }

@@ -1,4 +1,27 @@
-<cities-table [weatherDataByPage]="weatherDataByPage" [citiesCount]="citiesCount" [pageMaxCount]="PAGE_MAX_COUNT"></cities-table>
+<div class="alert alert-info" role="alert" *ngIf="lat && lng">
+	<h4 class="alert-heading">Your current coordinates: </h4>
+	<p class="mb-0">Latitude: {{lat | number: '2.2-2'}}, Longitude: {{lng | number: '2.2-2'}}</p>
+</div>
+<cities-table [weatherDataByPage]="weatherDataByPage" [citiesCount]="citiesCount"
+              [pageMaxCount]="PAGE_MAX_COUNT" [lastUpdateTableDate]="lastUpdatedWeatherDataDate"></cities-table>
+
+<h2>City Weather <span class="tag tag-info small"></span></h2>
+<form class="form-inline mb-1">
+	<div class="form-group">
+		<label for="city">City Name: </label>
+		<div class="input-group">
+			<input class="form-control" type="text" placeholder="City name" id="city" #city />
+			<span class="input-group-btn">
+				<button class="btn btn-success" type="button"
+					(click)="setCityName(city.value)">Get Weather</button>
+			</span>
+		</div>
+	</div>
+</form>
+<div class="table-responsive" *ngIf="cityName">
+	<span>City Temperature: {{cityName | cityWeather}} K</span>
+</div>
+<hr />
 <map [lat]="lat" [lng]="lng"></map>
 <loader [ngClass]="{'show': showLoader}"></loader>
 <toaster-container></toaster-container>
