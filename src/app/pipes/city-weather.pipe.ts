@@ -5,7 +5,7 @@ import { Toast, ToasterService} from 'angular2-toaster/angular2-toaster';
 
 import { IWeatherMap } from '../models/interfaces';
 
-@Pipe({name: 'cityWeather'})
+@Pipe({name: 'cityWeather', pure: false})
 export class CityWeatherPipe implements PipeTransform {
     citiesWeatherMap: Object = {};
 
@@ -48,8 +48,8 @@ export class CityWeatherPipe implements PipeTransform {
         }
     }
 
-    isDataNotExpired(time: Date){
-        var currentTime = new Date();
+    isDataNotExpired(time: Date) {
+        let currentTime = new Date();
 
         return (Number(currentTime) - Number(time)) < 300000;
     }
