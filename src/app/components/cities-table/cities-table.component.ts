@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { IList } from '../../models/interfaces';
 
 @Component({
     selector: 'cities-table',
     template: require('./cities-table.component.html'),
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styles: [require('./cities-table.component.scss')]
 })
 

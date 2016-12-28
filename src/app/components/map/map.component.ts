@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'map',
     template: require('./map.component.html'),
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styles: [require('./map.component.scss')]
 })
 
