@@ -21,6 +21,7 @@ import { CitiesTable } from './components/cities-table';
 import { Loader } from './components/loader';
 import { Map } from './components/map';
 import { UserWeather } from './components/user-weather';
+import { WeatherIcon } from './components/weather-icon';
 
 import { ColorWeather } from './directives/color-weather.directive';
 
@@ -51,6 +52,7 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         Loader,
         Map,
         UserWeather,
+        WeatherIcon,
 
         // Directives
         ColorWeather,

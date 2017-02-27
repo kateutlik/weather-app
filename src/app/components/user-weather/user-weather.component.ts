@@ -87,6 +87,8 @@ export class UserWeather implements OnInit {
     private getCityDataFromStorage(): Array<CUserWeatherCity> {
         let cities = this.storageService.getData('cities') || [];
 
+        debugger;
+
         cities.map((city: IUserWeatherCityForStorage) => {
             return new CUserWeatherCity(city.weatherData, city.favorite);
         });

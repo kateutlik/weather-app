@@ -5,6 +5,7 @@
             <thead>
             <tr>
                 <th>#</th>
+                <th>Icon</th>
                 <th><i class="fa fa-map-marker" aria-hidden="true"></i> Name</th>
                 <th><i class="fa fa-thermometer-full" aria-hidden="true"></i> Temperature, C&ordm;</th>
                 <th><i class="fa fa-angle-double-down" aria-hidden="true"></i> Pressure</th>
@@ -15,6 +16,9 @@
             <tbody>
             <tr *ngFor="let item of weatherDataByPage[page-1]; let i = index" [colorWeather]="item.main.temp | formatTemperature: 'K': 'C'" >
                 <td>{{(i * + 1 + pageMaxCount * (page-1))}}</td>
+                <td>
+                    <weather-icon [iconName]="item.weather[0].icon"></weather-icon>
+                </td>
                 <td>{{item.name | uppercase}}</td>
                 <td>{{item.main.temp | formatTemperature: 'K': 'C' | number : '1.1-1'}}</td>
                 <td>{{item.main.pressure}}</td>
