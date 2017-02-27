@@ -3,7 +3,7 @@ export interface ICoord {
     lat: number;
 }
 
-export interface IMain {
+export interface IMainWeather {
     temp: number;
     pressure: number;
     temp_min: number;
@@ -34,11 +34,11 @@ export interface IWeather {
     icon: string;
 }
 
-export interface IList {
+export interface IWeatherList {
     id: number;
     name: string;
     coord: ICoord;
-    main: IMain;
+    main: IMainWeather;
     dt: number;
     wind: IWind;
     sys: ISys;
@@ -46,9 +46,28 @@ export interface IList {
     weather: IWeather[];
 }
 
+export interface ICityWeather {
+    base: string;
+    clouds: IClouds;
+    cod: number;
+    coord: ICoord;
+    dt: number;
+    id: number;
+    main: IMainWeather;
+    name: string;
+    sys: ISys;
+    weather: IWeather[];
+    wind: IWind;
+}
+
 export interface IWeatherMap {
     message: string;
     cod: string;
     count: number;
-    list: IList[];
+    list: IWeatherList[];
+}
+
+export interface IUserWeatherCityForStorage {
+    weatherData: ICityWeather,
+    favorite: boolean
 }

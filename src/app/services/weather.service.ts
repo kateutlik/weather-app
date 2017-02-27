@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { IWeatherMap } from '../models/interfaces';
+import { IWeatherList, IWeatherMap, ICityWeather } from '../models/interfaces';
 
 @Injectable()
 export class WeatherService {
@@ -25,7 +25,7 @@ export class WeatherService {
             .map(this.extractData);
     }
 
-    getCityWeather(city: string): Observable<IWeatherMap> {
+    getCityWeather(city: string): Observable<ICityWeather> {
         let params: URLSearchParams = new URLSearchParams();
         params.set('q', city);
         params.set('APPID', this.API_KEY);

@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { WeatherService } from '../services/weather-service';
+import { WeatherService } from '../services';
 import { Toast, ToasterService} from 'angular2-toaster/angular2-toaster';
 
-import { IWeatherMap } from '../models/interfaces';
+import { IWeatherList, IWeatherMap } from '../models/interfaces';
 
 @Pipe({name: 'cityWeather', pure: false})
 export class CityWeatherPipe implements PipeTransform {
@@ -32,7 +32,7 @@ export class CityWeatherPipe implements PipeTransform {
             };
 
             this.weatherService.getCityWeather(cityName)
-                .subscribe((response: IWeatherMap) => {
+                .subscribe((response: IWeatherList) => {
                     that.citiesWeatherMap[cityName] = {};
                     that.citiesWeatherMap[cityName].data = response;
                     that.citiesWeatherMap[cityName].lastUpdateTime = new Date();

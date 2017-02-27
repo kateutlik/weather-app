@@ -2,6 +2,7 @@
 	<h4 class="alert-heading">Your current coordinates: </h4>
 	<p class="mb-0">Latitude: {{lat | number: '2.2-2'}}, Longitude: {{lng | number: '2.2-2'}}</p>
 </div>
+
 <cities-table [weatherDataByPage]="weatherDataByPage" [citiesCount]="citiesCount"
               [pageMaxCount]="PAGE_MAX_COUNT" [lastUpdateTableDate]="lastUpdatedWeatherDataDate"></cities-table>
 
@@ -21,7 +22,14 @@
 <div class="table-responsive" *ngIf="cityName">
 	<span>City Temperature: {{cityName | cityWeather}} K</span>
 </div>
+
 <hr />
+
+<user-weather></user-weather>
+
+<hr />
+
 <map [lat]="lat" [lng]="lng"></map>
+
 <loader [ngClass]="{'show': showLoader}"></loader>
 <toaster-container></toaster-container>

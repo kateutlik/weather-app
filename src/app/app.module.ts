@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import routes from './routes';
 
@@ -19,6 +20,7 @@ import { AppFooter } from './components/app-footer';
 import { CitiesTable } from './components/cities-table';
 import { Loader } from './components/loader';
 import { Map } from './components/map';
+import { UserWeather } from './components/user-weather';
 
 import { Cities } from './pages/cities';
 
@@ -30,6 +32,8 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         RouterModule.forRoot(routes),
         HttpModule,
         NgbModule.forRoot(),
+        FormsModule,
+        ReactiveFormsModule,
         AgmCoreModule.forRoot({
             apiKey: GOOGLE_API_KEY
         }),
@@ -44,6 +48,7 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         CitiesTable,
         Loader,
         Map,
+        UserWeather,
 
         // Pages
         Cities,
@@ -53,7 +58,8 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         pipes.CityWeatherPipe
     ],
     providers: [
-        services.WeatherService
+        services.WeatherService,
+        services.StorageService
     ],
     bootstrap: [ AppComponent ]
 })

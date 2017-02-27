@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { IList } from '../../models/interfaces';
+import { IWeatherList } from '../../models/interfaces';
 
 @Component({
     selector: 'cities-table',
@@ -10,7 +10,7 @@ import { IList } from '../../models/interfaces';
 })
 
 export class CitiesTable {
-    @Input() weatherDataByPage: Array<Array<IList>> = [];
+    @Input() weatherDataByPage: Array<Array<IWeatherList>> = [];
     @Input() citiesCount: number;
     @Input() pageMaxCount: number;
     @Input() lastUpdateTableDate: Object;

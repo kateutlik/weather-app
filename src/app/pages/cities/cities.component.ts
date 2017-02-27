@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Toast, ToasterService} from 'angular2-toaster/angular2-toaster';
 
-import { WeatherService } from '../../services/weather-service';
-import { IWeatherMap, IList } from '../../models/interfaces';
+import { WeatherService } from '../../services';
+import { IWeatherMap, IWeatherList } from '../../models/interfaces';
 
 @Component({
     selector: 'cities',
@@ -11,7 +11,7 @@ import { IWeatherMap, IList } from '../../models/interfaces';
 })
 
 export class Cities implements OnInit {
-    weatherDataByPage: Array<Array<IList>> = [];
+    weatherDataByPage: Array<Array<IWeatherList>> = [];
     showLoader = false;
     lat: number;
     lng: number;

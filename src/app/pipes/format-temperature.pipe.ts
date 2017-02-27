@@ -11,8 +11,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  */
 @Pipe({name: 'formatTemperature'})
 export class FormatTemperaturePipe implements PipeTransform {
-    transform(value: number, scaleFrom: string = 'F', scaleTo: string = 'C'): Promise<number> {
-        if (!value) return new Promise<number>(resolve => resolve(value));
+    transform(value: number, scaleFrom: string = 'F', scaleTo: string = 'C'): number {
+        if (!value) return value;
 
         let convertedValue: number;
 
@@ -49,6 +49,6 @@ export class FormatTemperaturePipe implements PipeTransform {
 
         }
 
-        return new Promise<number>(resolve => resolve(convertedValue));
+        return convertedValue;
     }
 }
