@@ -29,7 +29,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of cities.toJS(); let i = index">
+            <tr *ngFor="let item of cities.toJS(); let i = index" [colorWeather]="item.weatherData.main.temp | formatTemperature: 'K': 'C'">
                 <td>{{i}}</td>
                 <td>{{item.weatherData.name | uppercase}}</td>
                 <td>{{item.weatherData.main.temp | formatTemperature: 'K': 'C' | number : '1.1-1'}}</td>
