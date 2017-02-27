@@ -39,7 +39,9 @@
                 <td>{{item.weatherData.main.temp | formatTemperature: 'K': 'C' | number : '1.1-1'}}</td>
                 <td>{{item.weatherData.main.pressure}}</td>
                 <td>{{item.weatherData.main.humidity}}</td>
-                <td>{{item.weatherData.wind.speed}}</td>
+                <td>
+                    <wind-data [windSpeed]="item.weatherData.wind.speed" [windDeg]="item.weatherData.wind.deg"></wind-data>
+                </td>
                 <td>
                     <button type="button" class="btn btn-secondary" (click)="switchFavorite(i)">
                         <i class="fa" [ngClass]="{'fa-star' : item.favorite, 'fa-star-o' : !item.favorite}" aria-hidden="true"></i>

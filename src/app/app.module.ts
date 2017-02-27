@@ -22,8 +22,10 @@ import { Loader } from './components/loader';
 import { Map } from './components/map';
 import { UserWeather } from './components/user-weather';
 import { WeatherIcon } from './components/weather-icon';
+import { WindData } from './components/wind-data';
 
 import { ColorWeather } from './directives/color-weather.directive';
+import { WindDed } from './directives/wind-deg.directive';
 
 import { Cities } from './pages/cities';
 
@@ -53,9 +55,11 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         Map,
         UserWeather,
         WeatherIcon,
+        WindData,
 
         // Directives
         ColorWeather,
+        WindDed,
 
         // Pages
         Cities,

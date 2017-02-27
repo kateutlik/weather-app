@@ -23,7 +23,9 @@
                 <td>{{item.main.temp | formatTemperature: 'K': 'C' | number : '1.1-1'}}</td>
                 <td>{{item.main.pressure}}</td>
                 <td>{{item.main.humidity}}</td>
-                <td>{{item.wind.speed}}</td>
+                <td>
+                    <wind-data [windSpeed]="item.wind.speed" [windDeg]="item.wind.deg"></wind-data>
+                </td>
             </tr>
             </tbody>
         </table>
