@@ -10,7 +10,6 @@ export class ColorWeather {
     }
 
     ngOnInit() {
-        debugger;
         this.el.nativeElement.style.backgroundColor = this.getColor(this.temp)
     }
 

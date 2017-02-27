@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Toast, ToasterService} from 'angular2-toaster/angular2-toaster';
 
-import { WeatherService } from '../../services';
-import { IWeatherMap, IWeatherList } from '../../models/interfaces';
+import { WeatherService } from '../../services/index';
+import { IWeatherMap, IWeatherList } from '../../models/interfaces/index';
 
 @Component({
     selector: 'cities',
@@ -21,7 +21,9 @@ export class Cities implements OnInit {
 
     PAGE_MAX_COUNT = 10;
 
-    constructor(private toasterService: ToasterService, private weatherService: WeatherService) {
+
+    constructor(private toasterService: ToasterService,
+                private weatherService: WeatherService) {
     }
 
     ngOnInit() {

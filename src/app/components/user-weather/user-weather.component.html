@@ -1,59 +1,21 @@
 <div>
-    <h2>User's Weather Data</h2>
+	<h2>User's Weather Data</h2>
 
-    <form [formGroup]="addUserCityForm" class="form-inline mb-1">
-        <div class="form-group">
-            <label for="city">Add city to the list: </label>
-            <div class="input-group">
-                <input [formControl]="city" class="form-control" type="text" placeholder="City name" id="city" />
-			<span class="input-group-btn">
-				<button class="btn btn-success" type="button"
-                        (click)="addCity()">Add</button>
-			</span>
-            </div>
-        </div>
-    </form>
+	<form [formGroup]="addUserCityForm" class="form-inline mb-1">
+		<div class="form-group">
+			<label for="city">Add city to the list: </label>
+			<div class="input-group">
+				<input [formControl]="userCity" class="form-control" type="text" placeholder="City name" id="city"/>
+				<span class="input-group-btn">
+					<button class="btn btn-success" type="button"
+					        (click)="addCity()">Add
+					</button>
+				</span>
+			</div>
+		</div>
+	</form>
 
-    <div class="table-responsive" *ngIf="cities.size">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Icon</th>
-                <th><i class="fa fa-map-marker" aria-hidden="true"></i> Name</th>
-                <th><i class="fa fa-thermometer-full" aria-hidden="true"></i> Temperature, C&ordm;</th>
-                <th><i class="fa fa-angle-double-down" aria-hidden="true"></i> Pressure</th>
-                <th><i class="fa fa-tint" aria-hidden="true"></i> Humidity</th>
-                <th><i class="fa fa-flag" aria-hidden="true"></i> Wind speed</th>
-                <th><i class="fa fa-star" aria-hidden="true"></i> Favorite</th>
-                <th><i class="fa fa-trash" aria-hidden="true"></i> Remove</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of cities.toJS(); let i = index" [colorWeather]="item.weatherData.main.temp | formatTemperature: 'K': 'C'">
-                <td>{{i}}</td>
-                <td>
-                    <weather-icon [iconName]="item.weatherData.weather[0].icon"></weather-icon>
-                </td>
-                <td>{{item.weatherData.name | uppercase}}</td>
-                <td>{{item.weatherData.main.temp | formatTemperature: 'K': 'C' | number : '1.1-1'}}</td>
-                <td>{{item.weatherData.main.pressure}}</td>
-                <td>{{item.weatherData.main.humidity}}</td>
-                <td>
-                    <wind-data [windSpeed]="item.weatherData.wind.speed" [windDeg]="item.weatherData.wind.deg"></wind-data>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-secondary" (click)="switchFavorite(i)">
-                        <i class="fa" [ngClass]="{'fa-star' : item.favorite, 'fa-star-o' : !item.favorite}" aria-hidden="true"></i>
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-warning" (click)="removeCity(i)">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+	<user-weather-table [cities]="cities"
+	                    (onRemoveCity)="removeCity($event)"
+	                    (onSwitchFavorite)="switchFavorite($event)"></user-weather-table>
 </div>

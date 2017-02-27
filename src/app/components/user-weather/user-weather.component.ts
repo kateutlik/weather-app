@@ -1,44 +1,41 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import { Toast, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import * as Immutable from 'immutable';
 import { List } from 'immutable';
 
-import { IWeatherList, IWeatherMap, ICityWeather, IUserWeatherCityForStorage } from '../../models/interfaces/index';
-import { CUserWeatherCity } from "../../models/index";
+import { IUserWeatherCityForStorage, ICityWeather } from '../../models/interfaces/index';
+import { CUserWeatherCity } from '../../models/index';
 
 import { StorageService, WeatherService } from '../../services/index';
-
-import { Toast, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 @Component({
     selector: 'user-weather',
     template: require('./user-weather.component.html'),
-    changeDetection: ChangeDetectionStrategy.OnPush,
     styles: [require('./user-weather.component.scss')]
 })
 
 export class UserWeather implements OnInit {
-    cities: List<CUserWeatherCity>;
     addUserCityForm: FormGroup;
-    city: FormControl;
+    userCity: FormControl;
+    cities: List<CUserWeatherCity>;
 
-    constructor(private storageService: StorageService,
-                private weatherService: WeatherService,
-                private toasterService: ToasterService,
-                private builder: FormBuilder) {
-
+    constructor(private weatherService: WeatherService,
+                private storageService: StorageService,
+                private builder: FormBuilder,
+                private toasterService: ToasterService) {
     }
 
     ngOnInit() {
-        // todo: Add handel for data from local storage to create CUserWeatherCity instance
         this.cities = Immutable.List(this.getCityDataFromStorage()) as List<CUserWeatherCity>;
 
-        this.city = new FormControl('', []);
+        this.userCity = new FormControl('', []);
 
 
         this.addUserCityForm = this.builder.group({
-           city: this.city
+            userCity: this.userCity
         });
     }
 
@@ -51,13 +48,12 @@ export class UserWeather implements OnInit {
             timeout: 5000
         };
 
-        this.weatherService.getCityWeather(this.city.value)
+        this.weatherService.getCityWeather(this.userCity.value)
             .subscribe((response: ICityWeather) => {
                 this.cities = this.cities.push(new CUserWeatherCity(response, false));
-                debugger;
                 this.storageService.setData('cities', this.cities.toJS());
 
-                this.city.setValue('');
+                this.userCity.setValue('', {});
             }, () => {
                 toastConfig.type = 'error';
                 toastConfig.body = 'An error has occurred, please try again.';
@@ -70,11 +66,9 @@ export class UserWeather implements OnInit {
     switchFavorite(index: number) {
         let city = this.cities.get(index);
 
-        debugger;
-
         city = city.setFavorite(!city.getFavorite());
 
-        this.cities.set(index, city);
+        this.cities = this.cities.set(index, city);
         this.storageService.setData('cities', this.cities.toJS());
     }
 
@@ -83,16 +77,11 @@ export class UserWeather implements OnInit {
         this.storageService.setData('cities', this.cities.toJS());
     }
 
-
     private getCityDataFromStorage(): Array<CUserWeatherCity> {
-        let cities = this.storageService.getData('cities') || [];
+        let cities = this.storageService.getData<Array<IUserWeatherCityForStorage>>('cities') || [];
 
-        debugger;
-
-        cities.map((city: IUserWeatherCityForStorage) => {
+        return cities.map((city: IUserWeatherCityForStorage) => {
             return new CUserWeatherCity(city.weatherData, city.favorite);
         });
-
-        return cities;
     }
 }

@@ -9,7 +9,7 @@ export class WindDed {
 
     constructor(private el: ElementRef) {}
 
-    ngOnInit(){
+    ngOnInit() {
         this.el.nativeElement.style.transform = `rotate(${ this.windDeg }deg)`;
     }
 }
