@@ -24,6 +24,7 @@ import { UserWeather } from './components/user-weather';
 import { UserWeatherTable } from './components/user-weather-table';
 import { WeatherIcon } from './components/weather-icon';
 import { WindData } from './components/wind-data';
+import { RxjsHomework } from './components/rxjs-homework';
 
 import { ColorWeather } from './directives/color-weather.directive';
 import { WindDed } from './directives/wind-deg.directive';
@@ -58,6 +59,7 @@ const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
         UserWeatherTable,
         WeatherIcon,
         WindData,
+        RxjsHomework,
 
         // Directives
         ColorWeather,

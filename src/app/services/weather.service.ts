@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { IWeatherList, IWeatherMap, ICityWeather } from '../models/interfaces';
+import { IWeatherList, IWeatherMap, ICityWeather } from '../models/interfaces/index';
 
 @Injectable()
 export class WeatherService {
@@ -22,7 +22,8 @@ export class WeatherService {
         return this.http.get(this.API_URL + 'find', {
                 search: params
             })
-            .map(this.extractData);
+            .map(this.extractData)
+            .retryWhen(error => error.delay(500));
     }
 
     getCityWeather(city: string): Observable<ICityWeather> {

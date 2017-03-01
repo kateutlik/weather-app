@@ -1,0 +1,9 @@
+<h3>Users:</h3>
+<ul>
+    <li *ngFor="let doctor of doctors">{{doctor}}</li>
+</ul>
+
+<h3>Numbers from 2 streams:</h3>
+<ul>
+    <li *ngFor="let item of numbers">{{item.source}} : {{item.value}}</li>
+</ul>
