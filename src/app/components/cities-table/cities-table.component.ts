@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
 import { IWeatherList } from '../../models/interfaces';
 
@@ -14,6 +14,12 @@ export class CitiesTable {
     @Input() citiesCount: number;
     @Input() pageMaxCount: number;
     @Input() lastUpdateTableDate: Object;
+
+    @Output() onUpdateData = new EventEmitter<number>();
+
+    updateData() {
+        this.onUpdateData.emit();
+    }
 
     page = 1;
 }

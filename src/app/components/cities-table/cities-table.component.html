@@ -1,5 +1,8 @@
 <div *ngIf="weatherDataByPage.length">
-    <h2>Weather Data <span class="tag tag-info small">{{lastUpdateTableDate | date: 'short'}}</span></h2>
+    <h2>Weather Data
+        <span class="tag tag-info small">{{lastUpdateTableDate | date: 'short'}}</span>
+        <button type="button" class="btn btn-info" (click)="updateData()"><i class="fa fa-refresh"></i></button>
+    </h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

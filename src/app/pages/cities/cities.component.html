@@ -4,7 +4,8 @@
 </div>
 
 <cities-table [weatherDataByPage]="weatherDataByPage" [citiesCount]="citiesCount"
-              [pageMaxCount]="PAGE_MAX_COUNT" [lastUpdateTableDate]="lastUpdatedWeatherDataDate"></cities-table>
+              [pageMaxCount]="PAGE_MAX_COUNT" [lastUpdateTableDate]="lastUpdatedWeatherDataDate"
+              (onUpdateData)="getWeatherData($event)"></cities-table>
 
 <h2>City Weather <span class="tag tag-info small"></span></h2>
 <form class="form-inline mb-1">
