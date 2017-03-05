@@ -4,7 +4,7 @@ import { Directive, Input, ElementRef } from '@angular/core';
     selector: '[windDeg]'
 })
 
-export class WindDed {
+export class WindDeg {
     @Input() windDeg: number;
 
     constructor(private el: ElementRef) {}

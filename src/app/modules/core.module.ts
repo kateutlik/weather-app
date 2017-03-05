@@ -1,0 +1,37 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from'@angular/common';
+
+import { CitiesModule } from '../pages/cities/cities.module';
+import { StorageService } from '../services/storage.service';
+
+import { AppFooterModule } from '../components/app-footer/app-footer.module';
+import { AppHeaderModule } from '../components/app-header/app-header.module';
+import { MapModule } from '../components/map/map.module';
+
+@NgModule({
+    imports: [
+        CommonModule,
+
+        AppFooterModule,
+        AppHeaderModule,
+        MapModule,
+
+        CitiesModule
+    ],
+    declarations: [
+
+    ],
+    providers: [
+        StorageService
+    ],
+    exports: [
+        AppFooterModule,
+        AppHeaderModule,
+        MapModule,
+
+        CitiesModule
+    ],
+    bootstrap: [  ]
+})
+
+export class CoreModule { }

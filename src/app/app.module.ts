@@ -2,79 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import routes from './routes';
 
-import * as services from './services/index';
-import * as pipes from './pipes/index';
-
-import { AgmCoreModule } from 'angular2-google-maps/core';
-import { ToasterModule } from 'angular2-toaster/angular2-toaster';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from './modules/core.module';
 
 import { AppComponent } from './';
 
-import { AppHeader } from './components/app-header';
-import { AppFooter } from './components/app-footer';
-import { CitiesTable } from './components/cities-table';
-import { Loader } from './components/loader';
-import { Map } from './components/map';
-import { UserWeather } from './components/user-weather';
-import { UserWeatherTable } from './components/user-weather-table';
-import { WeatherIcon } from './components/weather-icon';
-import { WindData } from './components/wind-data';
-import { RxjsHomework } from './components/rxjs-homework';
-
-import { ColorWeather } from './directives/color-weather.directive';
-import { WindDed } from './directives/wind-deg.directive';
-
-import { Cities } from './pages/cities';
-
-const GOOGLE_API_KEY = 'AIzaSyD-6vpqXPXDmQYs0EMjTDeH-JMMsfqB5W0';
 
 @NgModule({
     imports: [
         BrowserModule,
         RouterModule.forRoot(routes),
         HttpModule,
-        NgbModule.forRoot(),
-        FormsModule,
-        ReactiveFormsModule,
-        AgmCoreModule.forRoot({
-            apiKey: GOOGLE_API_KEY
-        }),
-        ToasterModule
+
+        CoreModule
     ],
     declarations: [
-        AppComponent,
-
-        // Components
-        AppHeader,
-        AppFooter,
-        CitiesTable,
-        Loader,
-        Map,
-        UserWeather,
-        UserWeatherTable,
-        WeatherIcon,
-        WindData,
-        RxjsHomework,
-
-        // Directives
-        ColorWeather,
-        WindDed,
-
-        // Pages
-        Cities,
-
-        // Pipes
-        pipes.FormatTemperaturePipe,
-        pipes.CityWeatherPipe
+        AppComponent
     ],
     providers: [
-        services.WeatherService,
-        services.StorageService
     ],
     bootstrap: [ AppComponent ]
 })

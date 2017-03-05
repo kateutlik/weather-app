@@ -34,7 +34,7 @@ export class RxjsHomework {
 
         let second = Observable
             .timer(10, 500).map(value => {
-                return {source: '2', value:value};
+                return {source: '2', value: value};
             })
             .take(4);
 
