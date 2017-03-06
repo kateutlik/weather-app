@@ -5,9 +5,11 @@
         <i class="fa fa-sun-o" aria-hidden="true"></i>
         Weather App
     </a>
-    <!--<div id="navbar">-->
-        <!--<nav class="nav navbar-nav float-xs-left">-->
-            <!--<a class="nav-item nav-link" href="/">Home</a>-->
-        <!--</nav>-->
-    <!--</div>-->
+    <div id="navbar">
+        <nav class="nav navbar-nav float-xs-left">
+            <a class="nav-item nav-link" [routerLink]="['/cities']" routerLinkActive="active">Home</a>
+            <a class="nav-item nav-link" [routerLink]="['/user-weather']" routerLinkActive="active">User Weather</a>
+            <a class="nav-item nav-link" [routerLink]="['/map']" routerLinkActive="active">Map</a>
+        </nav>
+    </div>
 </nav>

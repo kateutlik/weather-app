@@ -1,0 +1,6 @@
+<div class="alert alert-info" role="alert" *ngIf="lat && lng">
+	<h4 class="alert-heading">Your current coordinates: </h4>
+	<p class="mb-0">Latitude: {{lat | number: '2.2-2'}}, Longitude: {{lng | number: '2.2-2'}}</p>
+</div>
+
+<map [lat]="lat" [lng]="lng"></map>

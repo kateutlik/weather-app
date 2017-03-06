@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from'@angular/common';
 
 import { CitiesModule } from '../pages/cities/cities.module';
+import { MapPageModule } from '../pages/map-page/map-page.module';
+import { UserWeatherPageModule } from '../pages/user-weather-page/user-weather-page.module';
+
 import { StorageService } from '../services/storage.service';
 
 import { AppFooterModule } from '../components/app-footer/app-footer.module';
@@ -16,7 +19,9 @@ import { MapModule } from '../components/map/map.module';
         AppHeaderModule,
         MapModule,
 
-        CitiesModule
+        CitiesModule,
+        MapPageModule,
+        UserWeatherPageModule
     ],
     declarations: [
 
@@ -29,7 +34,9 @@ import { MapModule } from '../components/map/map.module';
         AppHeaderModule,
         MapModule,
 
-        CitiesModule
+        CitiesModule,
+        MapPageModule,
+        UserWeatherPageModule
     ],
     bootstrap: [  ]
 })
